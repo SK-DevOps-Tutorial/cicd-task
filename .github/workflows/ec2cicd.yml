@@ -7,7 +7,13 @@ on:
   branches: 
       - "group-one"
  workflow_dispatch:  
-    
+env:
+    AWS_REGION: eu-west-2
+
+permissions:
+        id-token: write
+        contents: read
+
 jobs:
 
   provision-ec2:
@@ -20,9 +26,13 @@ jobs:
          - name: "Configure AWS Credentials"
            uses: aws-actions/configure-aws-credentials@v4.0.2
            with:
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            audience: sts.amazonaws.com
             aws-region: eu-west-2
+            role-to-assume: arn:aws:iam::637423323865:oidc-provider/token.actions.githubusercontent.com
+            
+            # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            # aws-region: eu-west-2
 
 
          - name: HashiCorp - Setup Terraform
