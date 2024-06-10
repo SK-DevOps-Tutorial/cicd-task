@@ -1,0 +1,40 @@
+name: Deploy Infrastructure
+
+on:
+   push:
+     branches: 
+      - "group-one"
+   workflow_dispatch:  
+    
+jobs:
+
+  provision-ec2:
+        runs-on: ubuntu-latest
+
+        steps:
+         - name: Checkout git repository
+           uses: actions/checkout@v4
+
+         - name: "Configure AWS Credentials"
+           uses: aws-actions/configure-aws-credentials@v4.0.2
+           with:
+            AWS_REGION: eu-west-2
+            AWS_ACCESS_KEY_ID: ${{ secrets.CICDDEMO_KEY }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.CICDDEMO_SECRET_KEY }}
+
+
+         - name: HashiCorp - Setup Terraform
+           uses: hashicorp/setup-terraform@v3.1.1
+     
+         - name: Terraform Init
+           run: terraform init
+
+         - name: Terraform Validate
+           run: terraform validate
+        
+         - name: Terraform Plan
+           run: terraform plan
+
+         - name: Terraform Apply
+           run: terraform apply
+
