@@ -19,8 +19,8 @@ jobs:
            uses: aws-actions/configure-aws-credentials@v4.0.2
            with:
             AWS_REGION: eu-west-2
-            AWS_ACCESS_KEY_ID: ${{ secrets.CICDDEMO_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.CICDDEMO_SECRET_KEY }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 
          - name: HashiCorp - Setup Terraform
@@ -37,4 +37,3 @@ jobs:
 
          - name: Terraform Apply
            run: terraform apply
-
