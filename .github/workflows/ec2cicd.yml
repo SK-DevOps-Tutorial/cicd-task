@@ -41,8 +41,10 @@ jobs:
            run: terraform init
 
          - name: Terraform Validate
-           run: terraform validate
-        
+           run: |
+            terraform validate
+            cd terraform
+
          - name: Terraform Plan
            run: terraform plan
 
