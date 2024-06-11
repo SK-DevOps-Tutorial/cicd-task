@@ -48,4 +48,4 @@ jobs:
         #    env:
         #     AWS_REGION: eu-west-2
          - name: Terraform Apply
-           run: terraform apply
+           run: terraform apply -auto-approve
