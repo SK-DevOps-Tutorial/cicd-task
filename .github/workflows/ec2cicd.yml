@@ -43,9 +43,9 @@ jobs:
          - name: Terraform Validate
            run: terraform validate
 
-         - name: Terraform Plan
-           run: terraform plan
-           env:
-            AWS_REGION: eu-west-2
+        #  - name: Terraform Plan
+        #    run: terraform plan
+        #    env:
+        #     AWS_REGION: eu-west-2
          - name: Terraform Apply
            run: terraform apply
