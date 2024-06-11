@@ -35,16 +35,19 @@ jobs:
          - name: Change directory
            run: |
             cd terraform
+            terraform init
+            terraform validate
+            terraform apply -auto-approve
 
-         - name: Terraform Init
-           run: terraform init
+       #  - name: Terraform Init
+       #   run: terraform init
 
-         - name: Terraform Validate
-           run: terraform validate
+       #  - name: Terraform Validate
+       #    run: terraform validate
 
         #  - name: Terraform Plan
         #    run: terraform plan
         #    env:
         #     AWS_REGION: eu-west-2
-         - name: Terraform Apply
-           run: terraform apply -auto-approve
+        # - name: Terraform Apply
+        #   run: terraform apply -auto-approve
