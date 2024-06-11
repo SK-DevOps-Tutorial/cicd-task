@@ -6,8 +6,6 @@ on:
  push:
   branches: 
       - "group-one"
-env:
-    AWS_REGION: eu-west-2
 
 permissions:
         id-token: write
@@ -47,6 +45,7 @@ jobs:
 
          - name: Terraform Plan
            run: terraform plan
-
+           env:
+            AWS_REGION: eu-west-2
          - name: Terraform Apply
            run: terraform apply
