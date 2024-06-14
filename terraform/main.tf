@@ -1,5 +1,5 @@
 resource "aws_instance" "cicd_webserver" {
-  ami           = var.image_id
+  ami           = "ami-0b53285ea6c7a08a7"
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.cicd_sg.id]
   subnet_id = aws_subnet.public_cicd.id
