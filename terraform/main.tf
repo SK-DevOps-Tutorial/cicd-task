@@ -19,7 +19,7 @@ resource "aws_security_group" "cicd_sg" {
   vpc_id      = aws_vpc.cicd_vpc.id  # Associate the security group with the specified VPC
 
   ingress {
-    from_port       =  80  # Port to allow inbound traffic from
+    from_port       = 80  # Port to allow inbound traffic from
     to_port         = 80  # Port to allow inbound traffic to
     protocol        = "tcp"  # Protocol for inbound traffic
     self            = true  # Allow traffic from the security group itself
@@ -27,8 +27,8 @@ resource "aws_security_group" "cicd_sg" {
   }
 
   egress {
-    from_port       =  80  # Port to allow outbound traffic from
-    to_port         = 80  # Port to allow outbound traffic to
+    from_port       = 0  # Port to allow outbound traffic from
+    to_port         = 0  # Port to allow outbound traffic to
     protocol        = "tcp"  # Protocol for outbound traffic
     self            = true  # Allow outbound traffic to the security group itself
     cidr_blocks     = ["0.0.0.0/0"]  # Allow outbound traffic to any IP address
