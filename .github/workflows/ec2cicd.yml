@@ -20,15 +20,20 @@ jobs:
          - name: Checkout git repository
            uses: actions/checkout@v4
 
-         - name: "Configure AWS Credentials"
-           uses: aws-actions/configure-aws-credentials@v4.0.2
-           with:
-            audience: sts.amazonaws.com
+         
+          #  uses: aws-actions/configure-aws-credentials@v4.0.2
+          #  with:
+            # audience: sts.amazonaws.com
+            # aws-region: eu-west-2
+            # role-to-assume: arn:aws:iam::637423323865:role/git-action
+         - name: "Configure AWS Credentials"   
+           run: |
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: eu-west-2
-            role-to-assume: arn:aws:iam::637423323865:role/git-action
-            
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+            # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
          - name: HashiCorp - Setup Terraform
            uses: hashicorp/setup-terraform@v3.1.1
