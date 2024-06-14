@@ -13,11 +13,6 @@ resource "aws_instance" "cicd_webserver" {
   EOF
 }
 
-resource "aws_ami" "amazonid" {
-  name = 
-  
-}
-
 resource "aws_security_group" "cicd_sg" {
   name        = "demo_sg"  # Security group
   description = "Allow TLS inbound traffic and all outbound traffic"  # Description of the security group
