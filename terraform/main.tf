@@ -16,7 +16,7 @@ resource "aws_instance" "cicd_webserver" {
 resource "aws_security_group" "cicd_sg" {
   name        = "demo_sg"  # Security group
   description = "Allow TLS inbound traffic and all outbound traffic"  # Description of the security group
-  vpc_id      = aws_vpc.cicd_vpc.id  # Associate the security group with the specified VPC
+  vpc_id      = aws_vpc.ci_vpc.id  # Associate the security group with the specified VPC
 
   # ingress {
   #   from_port       = 80  # Port to allow inbound traffic from
