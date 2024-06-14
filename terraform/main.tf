@@ -45,7 +45,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
 
 resource "aws_vpc_security_group_egress_rule" "allow_all" {
   security_group_id = aws_security_group.cicd_sg.id
-  cidr_ipv4   = "10.0.0.0"
+  cidr_ipv4   = "10.0.0.0/16"
   from_port   = 80
   ip_protocol = "tcp"
   to_port     = 80
