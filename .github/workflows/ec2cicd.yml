@@ -28,7 +28,7 @@ jobs:
             # role-to-assume: arn:aws:iam::637423323865:role/git-action
          - name: "Configure AWS Credentials"   
            run: |
-            AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: eu-west-2
 
