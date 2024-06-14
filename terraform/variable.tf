@@ -2,7 +2,7 @@ variable "region" {
 default = "us-west-2"
 }
 
-variable "ami" {
+variable "image_id" {
 type =     string
 default  = "ami-0b53285ea6c7a08a7"
 }

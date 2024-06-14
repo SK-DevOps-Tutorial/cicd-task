@@ -1,5 +1,5 @@
 resource "aws_instance" "cicd_webserver" {
-  ami           = var.ami
+  ami           = var.image_id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.cicd_sg.id]
   subnet_id = aws_subnet.public_cicd.id
@@ -57,7 +57,7 @@ resource "aws_route_table" "demo_rt" {
   vpc_id = aws_vpc.cicd_vpc.id
 
   route {
-    cidr_block = "10.0.0.0/24"
+    cidr_block = "10.0.3.0/24"
     gateway_id = aws_internet_gateway.demo_igw.id
  }
 }
