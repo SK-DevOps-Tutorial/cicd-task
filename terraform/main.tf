@@ -37,7 +37,7 @@ resource "aws_security_group" "cicd_sg" {
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
   security_group_id = aws_security_group.cicd_sg.id
-  cidr_ipv4         = aws_vpc.cicd_vpc.cidr_block
+  cidr_ipv4         = aws_vpc.ci_vpc.cidr_block
   from_port         = 443
   ip_protocol       = "tcp"
   to_port           = 443
