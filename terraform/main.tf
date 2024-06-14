@@ -1,6 +1,6 @@
 resource "aws_instance" "cicd_webserver" {
-  ami           = ami-0b53285ea6c7a08a7
-  instance_type = var.instance_type
+  ami =  "ami-0b53285ea6c7a08a7"
+  instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.cicd_sg.id]
   subnet_id = aws_subnet.public_cicd.id
 
@@ -11,6 +11,11 @@ resource "aws_instance" "cicd_webserver" {
   sudo apt install apache2 -y
   echo "*** Completed Installing apache2"
   EOF
+}
+
+resource "aws_ami" "amazonid" {
+  name = 
+  
 }
 
 resource "aws_security_group" "cicd_sg" {
