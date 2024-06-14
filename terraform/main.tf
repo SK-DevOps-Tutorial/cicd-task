@@ -51,26 +51,26 @@ resource "aws_vpc_security_group_egress_rule" "allow_all" {
   to_port     = 80
 }
 
-resource "aws_vpc" "cicd_vpc" {
+resource "aws_vpc" "ci_vpc" {
   cidr_block = "10.0.0.0/16"
 }
 
 resource "aws_subnet" "public_cicd" {
-  vpc_id     = aws_vpc.cicd_vpc.id
+  vpc_id     = aws_vpc.ci_vpc.id
   cidr_block = "10.0.1.0/24"
 }
 
   resource "aws_subnet" "private_cicd" {
-  vpc_id     = aws_vpc.cicd_vpc.id
+  vpc_id     = aws_vpc.ci_vpc.id
   cidr_block = "10.0.2.0/24"
 }
 
 resource "aws_internet_gateway" "demo_igw" {
-  vpc_id = aws_vpc.cicd_vpc.id
+  vpc_id = aws_vpc.ci_vpc.id
 }
 
 resource "aws_route_table" "demo_rt" {
-  vpc_id = aws_vpc.cicd_vpc.id
+  vpc_id = aws_vpc.ci_vpc.id
 
   route {
     cidr_block = "10.0.3.0/24"
