@@ -1,17 +1,45 @@
-resource "aws_instance" "demoec2" {
-  ami =  "ami-053a617c6207ecc7b"
+# resource "aws_instance" "demoec2" {
+#   ami =  "ami-053a617c6207ecc7b"
+#   instance_type = "t2.micro"
+#   vpc_security_group_ids = [aws_default_security_group.default-sg.id]
+#   # subnet_id = aws_subnet.public_cicd.id
+
+  data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["637423323865"] # Canonical
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_default_security_group.default-sg.id]
-  # subnet_id = aws_subnet.public_cicd.id
 
-  user_data = <<-EOF
+  tags = {
+    Name = "HelloWorld"
+  }
+
+user_data = <<-EOF
   #!/bin/bash
   echo "*** Installing apache2"
   sudo apt update -y
   sudo apt install apache2 -y
   echo "*** Completed Installing apache2"
   EOF
+
 }
+
+  
 
 # resource "aws_security_group" "cicd_sg" {
 #   name        = "demo_sg"  # Security group
