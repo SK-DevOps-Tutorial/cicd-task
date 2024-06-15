@@ -20,7 +20,7 @@ jobs:
          - name: Checkout git repository
            uses: actions/checkout@v4
 
-         
+        
           #  uses: aws-actions/configure-aws-credentials@v4.0.2
           #  with:
             # audience: sts.amazonaws.com
