@@ -1,5 +1,5 @@
-resource "aws_instance" "cicd_webserver" {
-  ami =  "ami-0b53285ea6c7a08a7"
+resource "aws_instance" "demoec2" {
+  ami =  "ami-053a617c6207ecc7b"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_default_security_group.default-sg.id]
   # subnet_id = aws_subnet.public_cicd.id
