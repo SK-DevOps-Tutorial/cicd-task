@@ -2,7 +2,7 @@ resource "aws_instance" "cicd_webserver" {
   ami =  "ami-0b53285ea6c7a08a7"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_default_security_group.default-sg.id]
-  subnet_id = aws_subnet.public_cicd.id
+  # subnet_id = aws_subnet.public_cicd.id
 
   user_data = <<-EOF
   #!/bin/bash
