@@ -58,7 +58,7 @@ resource "aws_default_vpc" "myvpc" {
 }
 
 resource "aws_default_security_group" "default-sg" {
-  vpc_id = aws_default_vpc.myvpc
+  vpc_id = aws_default_vpc.myvpc.id
 
   ingress {
     protocol  = -1
