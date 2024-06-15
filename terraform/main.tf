@@ -79,28 +79,28 @@ resource "aws_default_security_group" "default-sg" {
 #   cidr_block = "10.0.0.0/16"
 # }
 
-resource "aws_subnet" "public_cicd" {
-  vpc_id     = aws_default_vpc.myvpc.id
-  cidr_block = "10.0.1.0/24"
-}
+# resource "aws_subnet" "public_cicd" {
+#   vpc_id     = aws_default_vpc.myvpc.id
+#   cidr_block = "10.0.1.0/24"
+# }
 
-  resource "aws_subnet" "private_cicd" {
-  vpc_id     = aws_default_vpc.myvpc.id
-  cidr_block = "10.0.2.0/24"
-}
+#   resource "aws_subnet" "private_cicd" {
+#   vpc_id     = aws_default_vpc.myvpc.id
+#   cidr_block = "10.0.2.0/24"
+# }
 
-resource "aws_internet_gateway" "demo_igw" {
-  vpc_id = aws_default_vpc.myvpc.id
-}
+# resource "aws_internet_gateway" "demo_igw" {
+#   vpc_id = aws_default_vpc.myvpc.id
+# }
 
-resource "aws_route_table" "demo_rt" {
-  vpc_id = aws_default_vpc.myvpc.id
+# resource "aws_route_table" "demo_rt" {
+#   vpc_id = aws_default_vpc.myvpc.id
 
-  route {
-    cidr_block = "10.0.3.0/24"
-    gateway_id = aws_internet_gateway.demo_igw.id
- }
-}
+#   route {
+#     cidr_block = "10.0.3.0/24"
+#     gateway_id = aws_internet_gateway.demo_igw.id
+#  }
+# }
 
 resource "aws_s3_bucket" "cicd24-s3-bucket" {
   bucket = "my-tf-demo-bucket"
