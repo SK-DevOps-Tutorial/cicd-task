@@ -1,6 +1,6 @@
-variable "region" {
-default = "eu-west-2"
-}
+# variable "region" {
+# default = "eu-west-2"
+# }
 
 # variable "image_id" {
 # type =     string
