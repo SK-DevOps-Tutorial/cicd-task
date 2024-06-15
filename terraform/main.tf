@@ -90,7 +90,7 @@ resource "aws_subnet" "public_cicd" {
 }
 
 resource "aws_internet_gateway" "demo_igw" {
-  vpc_id = aaws_default_vpc.myvpc.id
+  vpc_id = aws_default_vpc.myvpc.id
 }
 
 resource "aws_route_table" "demo_rt" {
